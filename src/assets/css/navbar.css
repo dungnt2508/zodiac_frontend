@@ -1,0 +1,79 @@
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(47, 47, 47, 0.7); /* Độ trong suốt 0.7, có thể điều chỉnh */
+    backdrop-filter: blur(10px); /* Hiệu ứng thủy tinh */
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    transition: background 0.3s ease; /* Hiệu ứng chuyển đổi khi cuộn */
+}
+
+/* Logo trong suốt */
+.snake-logo {
+    width: 60px;
+    height: auto;
+    filter: drop-shadow(0 0 10px #d4af37); /* Hiệu ứng bóng nhẹ để logo nổi bật */
+    transition: filter 0.3s ease;
+}
+
+/* Hover logo để tăng hiệu ứng */
+.snake-logo:hover {
+    filter: drop-shadow(0 0 20px #d4af37) drop-shadow(0 0 15px #8b5a2b);
+}
+
+/* Responsive cho navbar */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+        background: rgba(47, 47, 47, 0.85); /* Tăng độ mờ trên mobile */
+    }
+
+    .snake-logo {
+        width: 50px;
+    }
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #d4af37;
+    transition: all 0.3s ease;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-item {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    color: #d4af37;
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item:hover {
+    color: #fff;
+    transform: translateY(-3px);
+    text-shadow: 0 0 10px #d4af37;
+}

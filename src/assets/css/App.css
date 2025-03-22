@@ -1,0 +1,235 @@
+/* CSS Variables for better maintainability */
+:root {
+    --primary-color: #d4af37;
+    --secondary-color: #8b5a2b;
+    --accent-color: #fff;
+    --background-color: #2f2f2f;
+    --transparent-bg: rgba(255, 255, 255, 0.1);
+    --glass-effect-bg: rgba(255, 255, 255, 0.2);
+    --shadow-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Reset CSS */
+*,
+*::before,
+*::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Global Styles */
+body {
+    font-family: 'Roboto', sans-serif;
+    background: linear-gradient(135deg, var(--background-color), var(--secondary-color), var(--primary-color));
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    position: relative;
+    overflow-x: hidden;
+    min-height: 100vh;
+    color: var(--accent-color);
+}
+
+body::before,
+body::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+body::before {
+    background: radial-gradient(circle at top left, rgba(212, 175, 55, 0.1), transparent 70%);
+}
+
+body::after {
+    background: url('/static/assets/imgs/gold-pattern.jpg') repeat center;
+    opacity: 0.05;
+    animation: fade 20s ease infinite;
+}
+
+/* Container chung */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Navbar */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start; /* Thay vì 'space-between' để logo vào góc trái */
+    align-items: center;
+    padding: 15px 30px;
+    background: rgba(47, 47, 47, 0.7);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px var(--shadow-color);
+    z-index: 1000;
+    transition: background 0.3s ease;
+}
+
+.snake-logo {
+    width: 60px;
+    filter: drop-shadow(0 0 10px var(--primary-color));
+    transition: filter 0.3s ease;
+    margin-left: 0; /* Đảm bảo logo nằm ở đầu, không bị lệch */
+}
+
+.snake-logo:hover {
+    filter: drop-shadow(0 0 20px var(--primary-color)) drop-shadow(0 0 15px var(--secondary-color));
+}
+
+/* Navbar Links */
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-item {
+    font-weight: 500;
+    font-size: 18px;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 10px 20px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.nav-item:hover {
+    color: var(--accent-color);
+    transform: translateY(-3px);
+    text-shadow: 0 0 10px var(--primary-color);
+}
+
+/* Animations */
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes fade {
+    0% { opacity: 0.05; }
+    50% { opacity: 0.08; }
+    100% { opacity: 0.05; }
+}
+
+@keyframes glow {
+    from { text-shadow: 0 0 10px var(--primary-color), 0 0 20px var(--secondary-color); }
+    to { text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color); }
+}
+
+/* Hero Section */
+.hero {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-content h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 100px;
+    background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px var(--primary-color), 0 0 40px var(--secondary-color);
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.hero-content p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: var(--primary-color);
+}
+
+/* Zodiac Form */
+.zodiac-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 30px;
+    padding: 20px;
+    max-width: 800px;
+}
+
+.zodiac-form input[type="text"],
+.zodiac-form select {
+    padding: 15px 20px;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+    border-radius: 25px;
+    background: var(--transparent-bg);
+    color: var(--accent-color);
+    width: 100%;
+    max-width: 300px;
+}
+
+.zodiac-form button {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 24px;
+    padding: 15px 40px;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    color: var(--accent-color);
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Responsive Design */
+@media (min-width: 1470px) {
+    .features, .fortune-telling, .zodiac-signs {
+        padding: 120px 0;
+    }
+
+    .hero-content h1 {
+        font-size: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+        background: rgba(47, 47, 47, 0.85);
+    }
+
+    .snake-logo {
+        width: 50px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(47, 47, 47, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-item {
+        font-size: 22px;
+        padding: 20px;
+    }
+}

@@ -1,0 +1,237 @@
+/* Responsive Design */
+@media (max-width: 768px) {
+    .navbar {
+        padding: 10px 20px;
+    }
+
+    .snake-logo {
+        width: 50px;
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 70%;
+        height: 100vh;
+        background: rgba(47, 47, 47, 0.95);
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        transition: left 0.3s ease;
+    }
+
+    .nav-links.active {
+        left: 0;
+    }
+
+    .nav-item {
+        font-size: 22px;
+        padding: 20px;
+    }
+
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+    /* Hero Section */
+    .hero {
+        height: auto;
+        padding: 120px 20px;
+    }
+
+    .hero-content h1 {
+        font-size: 40px;
+    }
+
+    .hero-content p {
+        font-size: 18px;
+        margin: 15px 0;
+    }
+
+    /* Zodiac Form */
+    .zodiac-form {
+        flex-direction: column;
+        padding: 15px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .date-time-group {
+        flex: 1 1 100%;
+    }
+
+    .zodiac-form input[type="text"] {
+        width: 100%;
+        max-width: 250px;
+        margin: 0 auto 10px;
+    }
+
+    .button-group {
+        width: 100%;
+    }
+
+    .zodiac-form button {
+        width: 100%;
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .zodiac-result {
+        font-size: 24px;
+        margin-top: 20px;
+    }
+
+    .ai-assistant {
+        max-height: 30vh;
+    }
+
+    /* Features Section */
+    .features {
+        padding: 50px 20px;
+        gap: 30px;
+    }
+
+    .feature-card {
+        padding: 30px;
+    }
+
+    .feature-card h3 {
+        font-size: 24px;
+    }
+
+    .feature-card p {
+        font-size: 16px;
+    }
+
+    /* Zodiac Signs Section */
+    .zodiac-signs {
+        padding: 80px 20px;
+    }
+
+    .zodiac-header h1 {
+        font-size: 36px;
+    }
+
+    .zodiac-header p {
+        font-size: 16px;
+    }
+
+    .zodiac-grid {
+        gap: 20px;
+    }
+
+    .zodiac-card h3 {
+        font-size: 22px;
+    }
+
+    .zodiac-card p {
+        font-size: 14px;
+    }
+
+    /* Fortune Telling Section */
+    .fortune-telling {
+        padding: 80px 20px;
+    }
+
+    .fortune-header h1 {
+        font-size: 36px;
+    }
+
+    .fortune-header p {
+        font-size: 16px;
+    }
+
+    .fortune-form {
+        flex-direction: column;
+        gap: 15px;
+        padding: 15px;
+    }
+
+    .fortune-form input,
+    .fortune-form select {
+        width: 100%;
+        font-size: 16px;
+        padding: 12px;
+    }
+
+    .fortune-form button {
+        font-size: 20px;
+        padding: 12px 30px;
+    }
+
+    .fortune-result {
+        font-size: 20px;
+    }
+
+    /* Footer */
+    .footer {
+        padding: 30px;
+    }
+
+    .footer p {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-content p {
+        font-size: 16px;
+    }
+
+    .zodiac-form input[type="text"] {
+        font-size: 14px;
+        padding: 12px;
+        max-width: 200px;
+    }
+
+    .zodiac-form button {
+        font-size: 20px;
+        padding: 12px 30px;
+    }
+
+    .zodiac-result {
+        font-size: 20px;
+    }
+
+    .ai-assistant {
+        max-height: 25vh;
+        font-size: 16px;
+    }
+
+    .feature-card h3 {
+        font-size: 20px;
+    }
+
+    .feature-card p {
+        font-size: 14px;
+    }
+
+    .zodiac-header h1 {
+        font-size: 30px;
+    }
+
+    .fortune-header h1 {
+        font-size: 30px;
+    }
+}
+

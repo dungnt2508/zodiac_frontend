@@ -1,0 +1,56 @@
+/* Zodiac Signs Section */
+.zodiac-signs {
+    padding: 120px 50px;
+    text-align: center;
+}
+
+.zodiac-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    background: linear-gradient(45deg, #d4af37, #fff);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px #d4af37;
+}
+
+.zodiac-header p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #d4af37;
+    margin: 20px 0;
+}
+
+.zodiac-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.zodiac-card {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    border-radius: 20px;
+    border: 1px solid #d4af37;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    transition: transform 0.4s ease;
+}
+
+.zodiac-card:hover {
+    transform: translateY(-10px);
+}
+
+.zodiac-card h3 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 28px;
+    color: #d4af37;
+    text-shadow: 0 0 10px #d4af37;
+}
+
+.zodiac-card p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #fff;
+    margin: 10px 0;
+}

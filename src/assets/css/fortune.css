@@ -1,0 +1,51 @@
+/* Fortune Telling Section */
+.fortune-telling {
+    padding: 120px 50px;
+    text-align: center;
+}
+
+.fortune-header h1 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 80px;
+    background: linear-gradient(45deg, #d4af37, #fff);
+    -webkit-background-clip: text;
+    color: transparent;
+    text-shadow: 0 0 20px #d4af37;
+}
+
+.fortune-header p {
+    font-family: 'Roboto', sans-serif;
+    font-size: 22px;
+    color: #d4af37;
+    margin: 20px 0;
+}
+
+.fortune-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+}
+
+.fortune-form select {
+    padding: 15px;
+    font-size: 18px;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+.fortune-result {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+    color: #d4af37;
+    margin-top: 30px;
+    opacity: 0;
+    transform: scale(0.9);
+    animation: popIn 0.5s ease forwards;
+    text-shadow: 0 0 10px #d4af37;
+    white-space: pre-wrap;
+}
