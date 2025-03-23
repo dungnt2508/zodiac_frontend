@@ -77,3 +77,24 @@
     transform: translateY(-3px);
     text-shadow: 0 0 10px #d4af37;
 }
+
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: 60px;
+        left: 0;
+        background: rgba(47, 47, 47, 0.9);
+        text-align: center;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+}

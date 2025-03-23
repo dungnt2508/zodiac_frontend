@@ -4,6 +4,7 @@ import axios from "axios";
 import DatePicker from 'react-datepicker';
 import PopupHoroscopeDaily from '../../assets/js/PopupHoroscopeDaily.jsx';
 import "react-datepicker/dist/react-datepicker.css";
+import '../../assets/css/DailyPredictionContent.css';
 
 const BirthDateTimePicker = ({ onDateChange, onTimeChange, birthDate, birthTime }) => {
   const currentYear = new Date().getFullYear();
@@ -44,19 +45,15 @@ const BirthDateTimePicker = ({ onDateChange, onTimeChange, birthDate, birthTime 
 };
 
 const DailyPredictionContent = () => {
-  // State cho form
   const [formData, setFormData] = useState({
     full_name: '',
-    birth_day: '', // Chuỗi định dạng "YYYY-MM-DD"
+    birth_day: '', // Chuỗi định dạng "YYYY-MM-DD" gửi API
     birth_time: '', // Chuỗi định dạng "HH:mm"
     contact: ''
   });
 
-  // State riêng cho DatePicker
   const [birthDate, setBirthDate] = useState(null);
   const [birthTime, setBirthTime] = useState(null);
-
-  // State cho popup và kết quả từ API
   const [showPopup, setShowPopup] = useState(false);
   const [predictionResult, setPredictionResult] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
@@ -71,7 +68,11 @@ const DailyPredictionContent = () => {
   const handleDateChange = (date) => {
     setBirthDate(date);
     if (date) {
-      const formattedDate = date.toISOString().split('T')[0]; // "YYYY-MM-DD"
+      // Đảm bảo ngày không bị lệch múi giờ
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, '0'); // +1 vì getMonth() đếm từ 0
+      const day = String(date.getDate()).padStart(2, '0');
+      const formattedDate = `${year}-${month}-${day}`; // "YYYY-MM-DD"
       setFormData({ ...formData, birth_day: formattedDate });
     } else {
       setFormData({ ...formData, birth_day: '' });
@@ -92,30 +93,41 @@ const DailyPredictionContent = () => {
     }
   };
 
+  // Định dạng ngày sinh thành "dd/MM/yyyy" cho popup
+  const formatDateForDisplay = (dateStr) => {
+    if (!dateStr) return '';
+    const [year, month, day] = dateStr.split('-');
+    return `${day}/${month}/${year}`; // "dd/MM/yyyy"
+  };
+
   // Xử lý khi nhấp nút "Khám phá"
   const handleExplore = async (e) => {
     e.preventDefault();
-    setErrorMessage(null); // Reset lỗi trước khi gửi
+    setErrorMessage(null);
 
-    // Kiểm tra dữ liệu đầu vào
-    if (!formData.birth_time) {
+    if (!formData.full_name) {
+      setErrorMessage("Vui lòng nhập họ tên!");
+      return;
+    }
+
+    if (!formData.birth_day) {
       setErrorMessage("Vui lòng chọn ngày sinh!");
       return;
     }
 
     try {
-        const API_URL = import.meta.env.VITE_APP_API_URL;
-        const response = await axios.post(`${API_URL}/api/horoscope_daily/`, {
-                full_name: formData.full_name,
-                birth_day: formData.birth_day,
-                birth_time: formData.birth_time
-            });
+      const API_URL = import.meta.env.VITE_APP_API_URL;
+      const response = await axios.post(`${API_URL}/api/horoscope_daily/`, {
+        full_name: formData.full_name,
+        birth_day: formData.birth_day,
+        birth_time: formData.birth_time
+      });
       setPredictionResult(response.data);
       setShowPopup(true);
     } catch (error) {
       console.error('Error fetching prediction:', error);
       const errorMsg = error.response?.data?.error || 'Có lỗi xảy ra, vui lòng thử lại!';
-      setPredictionResult({ result: errorMsg }); // Dùng "result" thay "message" để đồng bộ với backend
+      setPredictionResult({ result: errorMsg });
       setShowPopup(true);
     }
   };
@@ -151,15 +163,6 @@ const DailyPredictionContent = () => {
               onDateChange={handleDateChange}
               onTimeChange={handleTimeChange}
             />
-            <div className="form-group">
-              <input
-                type="text"
-                name="contact"
-                placeholder="Email hoặc Telegram ID"
-                value={formData.contact}
-                onChange={handleInputChange}
-              />
-            </div>
             <div className="form-group button-group">
               <button type="submit" className="btn-interact">
                 Khám phá
@@ -173,10 +176,10 @@ const DailyPredictionContent = () => {
             <div className="overlay" onClick={closePopup}></div>
             <PopupHoroscopeDaily
               horoscope_daily={{
-                full_name: formData.full_name || 'Người dùng',
-                birth_day: formData.birth_day,
+                full_name: formData.full_name,
+                birth_day: formatDateForDisplay(formData.birth_day), // Định dạng lại thành "dd/MM/yyyy"
                 birth_time: formData.birth_time,
-                contact: formData.contact,
+                formatted_date: predictionResult?.formatted_date,
                 result: predictionResult?.result || 'Không có kết quả'
               }}
               closePopup={closePopup}

@@ -1,0 +1,11 @@
+.error-message {
+  color: #ff5733 !important; /* Màu đỏ, ưu tiên cao */
+  font-size: 14px;
+  margin: 10px 0;
+  text-align: center;
+  animation: blink 1s infinite; /* Hiệu ứng nhấp nháy */
+}
+
+@keyframes blink {
+  50% { opacity: 0.5; } /* Nhấp nháy bằng cách thay đổi độ mờ */
+}

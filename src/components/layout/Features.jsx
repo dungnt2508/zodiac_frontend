@@ -10,7 +10,7 @@ const Features = () => {
         <div className="feature-card">
           <h3 className="text-3d">Bài viết nổi bật</h3>
           <p>
-            <Link to="/zodiac-blog">Rắn Vàng 2025: Điều gì chờ đợi?</Link>
+            <Link to="/blog">Rắn Vàng 2025: Điều gì chờ đợi?</Link>
           </p>
         </div>
         <div className="feature-card">
@@ -20,15 +20,15 @@ const Features = () => {
           </p>
         </div>
         <div className="feature-card">
-          <h3 className="text-3d">Mini game tử vi</h3>
+          <h3 className="text-3d">Mini game</h3>
           <p>
-            <Link to="/zodiac-minigame">Chơi để khám phá vận mệnh bất ngờ trong ngày.</Link>
+            <Link to="/minigame">Chơi để khám phá vận mệnh bất ngờ trong ngày.</Link>
           </p>
         </div>
         <div className="feature-card">
           <h3 className="text-3d">Phong thủy con giáp</h3>
           <p>
-            <Link to="/zodiac-fengshui">Gợi ý phong thủy tăng vận may.</Link>
+            <Link to="/fengshui">Gợi ý phong thủy tăng vận may.</Link>
           </p>
         </div>
       </section>
