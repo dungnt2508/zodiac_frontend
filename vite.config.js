@@ -8,6 +8,7 @@ export default defineConfig(({ mode }) => {
   console.log(env)
 
   return {
+    base: '/zodiac_frontend/',  // Tên repo trên GitHub của bạn
     plugins: [react()],
     define: {
       'import.meta.env.VITE_APP_API_URL': JSON.stringify(env.VITE_APP_API_URL),
