@@ -4,6 +4,7 @@ import ZodiacCard from '../../assets/js/ZodiacCard.jsx';
 import Popup from '../../assets/js/Popup.jsx';
 import '../../assets/css/zodiac-card.css';
 
+
 function HomeContent() {
   const [selectedZodiac, setSelectedZodiac] = useState(null);
   const [zodiacDailyPredict, setZodiacDailyPredict] = useState([]);
@@ -11,8 +12,10 @@ function HomeContent() {
   useEffect(() => {
     const fetchZodiacData = async () => {
       try {
-        const response = await axios.get("http://localhost:8000/api/predictions/");
-        console.log(response.data)
+          console.log(import.meta.env);
+          const API_URL = import.meta.env.VITE_APP_API_URL;
+        const response = await axios.get(`${API_URL}/api/predictions/`);
+//         console.log("url", `${API_URL}/api/predictions/`)
         setZodiacDailyPredict(response.data); // Cập nhật dữ liệu từ API
       } catch (error) {
         console.error("Error fetching zodiac data:", error);
@@ -33,7 +36,7 @@ function HomeContent() {
   }, []);
 
   const openPopup = (zodiac) => {
-    console.log('Opening popup with:', zodiac); // Debug giá trị zodiac
+//     console.log('Opening popup with:', zodiac); // Debug giá trị zodiac
     setSelectedZodiac(zodiac);
   };
 
@@ -42,7 +45,7 @@ function HomeContent() {
   };
 
   useEffect(() => {
-    console.log('Selected Zodiac updated:', selectedZodiac); // Debug state
+//     console.log('Selected Zodiac updated:', selectedZodiac); // Debug state
   }, [selectedZodiac]);
 
   return (

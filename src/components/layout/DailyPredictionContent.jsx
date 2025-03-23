@@ -104,11 +104,12 @@ const DailyPredictionContent = () => {
     }
 
     try {
-      const response = await axios.post('http://localhost:8000/api/horoscope_daily/', {
-        full_name: formData.full_name,
-        birth_day: formData.birth_day,
-        birth_time: formData.birth_time
-      });
+        const API_URL = import.meta.env.VITE_APP_API_URL;
+        const response = await axios.post(`${API_URL}/api/horoscope_daily/`, {
+                full_name: formData.full_name,
+                birth_day: formData.birth_day,
+                birth_time: formData.birth_time
+            });
       setPredictionResult(response.data);
       setShowPopup(true);
     } catch (error) {
