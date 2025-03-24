@@ -1,12 +1,51 @@
-# React + Vite
+🏮 Dự Án 12 Con Giáp - Tử Vi Hàng Ngày
+-
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+🌟 Giới Thiệu
+-
 
-Currently, two official plugins are available:
+Đây là một ứng dụng web được phát triển bằng React + Vite, cho phép người dùng xem tử vi hàng ngày dựa trên 12 con giáp. Người dùng có thể nhập ngày sinh để nhận dự đoán về vận mệnh, may mắn và lời khuyên hữu ích mỗi ngày.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🚀 Công Nghệ Sử Dụng
+-
 
-## Expanding the ESLint configuration
+Frontend: React + Vite
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Backend: Django REST Framework + Dashboard AdminLTE
+
+Database: MySQL
+
+
+📌 Tính Năng Chính
+-
+
+- Xem tử vi hàng ngày theo tuổi (12 con giáp).
+- Dự đoán vận mệnh dựa trên ngày sinh.
+- Gửi thông báo dự đoán hàng ngày và hàng tuần qua:
+    - Email
+    - Telegram
+    - SMS (số điện thoại)
+- Tư vấn phong thủy cơ bản.
+- Blog và các câu chuyện thú vị liên quan đến 12 con giáp.
+- Minigame hàng ngày.
+
+
+📜 Lộ Trình Phát Triển
+- 
+- Giai đoạn 1: Hoàn thiện giao diện frontend cơ bản và tích hợp API tử vi.
+- Giai đoạn 2: Phát triển hệ thống gửi thông báo qua email, Telegram và SMS.
+- Giai đoạn 3: Thêm tính năng tư vấn phong thủy chi tiết và tối ưu hóa trải nghiệm người dùng.
+- Giai đoạn 4: Ra mắt blog với nội dung phong phú về 12 con giáp.
+- Giai đoạn 5: Bảo trì, nâng cấp và mở rộng tính năng dựa trên phản hồi người dùng.
+
+
+
+💡 Đóng Góp & Phát Triển
+-  
+- Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng. Nếu bạn có ý tưởng hoặc muốn báo lỗi, vui lòng liên hệ qua email hoặc mở issue trên repository.
+
+
+📬 Liên Hệ
+-
+- 📧 gsnake6789@gmail.com
+- 📞 0937974444

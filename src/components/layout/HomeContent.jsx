@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
 import ZodiacCard from '../../assets/js/ZodiacCard.jsx';
 import Popup from '../../assets/js/Popup.jsx';
@@ -10,35 +10,42 @@ function HomeContent() {
   const [zodiacDailyPredict, setZodiacDailyPredict] = useState([]);
 
   useEffect(() => {
-    const fetchZodiacData = async () => {
-      try {
-          console.log(import.meta.env);
+      let isMounted = true;
+
+      const fetchZodiacData = async () => {
+        try {
           const API_URL = import.meta.env.VITE_APP_API_URL;
-        const response = await axios.get(`${API_URL}/api/predictions/`);
-//         console.log("url", `${API_URL}/api/predictions/`)
-        setZodiacDailyPredict(response.data); // Cập nhật dữ liệu từ API
-      } catch (error) {
-        console.error("Error fetching zodiac data:", error);
-        setZodiacDailyPredict([
-          {
-            code: 'rat',
-            name: 'Tý (Chuột)',
-            description: 'Thông minh, nhanh nhẹn, thích nghi tốt.',
-            compatibility: 'Thân, Thìn',
-            fortune_2025: 'Năm thuận lợi, tài lộc dồi dào.',
-            fortune_today: 'Hôm nay may mắn trong công việc.'
-          },
-        ]);
-      }
-    };
+          const response = await axios.get(`${API_URL}/api/predictions/`);
+          if (isMounted) {
+            setZodiacDailyPredict(response.data);
+          }
+        } catch (error) {
+          console.error("Error fetching zodiac data:", error);
+          if (isMounted) {
+            setZodiacDailyPredict([
+              {
+                code: 'rat',
+                name: 'Tý (Chuột)',
+                description: 'Thông minh, nhanh nhẹn, thích nghi tốt.',
+                compatibility: 'Thân, Thìn',
+                fortune_2025: 'Năm thuận lợi, tài lộc dồi dào.',
+                fortune_today: 'Hôm nay may mắn trong công việc.'
+              },
+            ]);
+          }
+        }
+      };
 
-    fetchZodiacData();
-  }, []);
+      fetchZodiacData();
 
-  const openPopup = (zodiac) => {
-//     console.log('Opening popup with:', zodiac); // Debug giá trị zodiac
-    setSelectedZodiac(zodiac);
-  };
+      return () => {
+        isMounted = false;
+      };
+    }, []);
+
+  const openPopup = useCallback((zodiac) => {
+      setSelectedZodiac(zodiac);
+    }, []);
 
   const closePopup = () => {
     setSelectedZodiac(null);
